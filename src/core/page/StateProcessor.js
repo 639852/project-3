@@ -1,7 +1,10 @@
+// Оптимизировал сохранение состояния, путём использования debounce.
+import { debounce } from "../utils";
+
 export class StateProcessor {
-  constructor(client) {
+  constructor(client, delay = 300) {
     this.client = client;
-    this.listen = this.listen.bind(this);
+    this.listen = debounce(this.listen.bind(this), delay);
   }
 
   listen(state) {

@@ -15,13 +15,15 @@ export class Router {
 
     this.page = null;
 
+    // Закфиксировал this, потому что в async методе была потяря контекста
+    this.changePageHandler = this.changePageHandler.bind(this)
+
     this.init();
   }
 
   init() {
-    // Закфиксировал this, потому что в async методе была потяря контекста
-    window.addEventListener('hashchange', this.changePageHandler.bind(this));
-    this.changePageHandler.apply(this);
+    window.addEventListener('hashchange', this.changePageHandler);
+    this.changePageHandler();
   }
 
   async changePageHandler() {
@@ -45,7 +47,6 @@ export class Router {
   }
 
   destroy() {
-    // Закфиксировал this, потому что в async методе была потяря контекста
-    window.removeEventListener('hashchange', this.changePageHandler.bind(this));
+    window.removeEventListener('hashchange', this.changePageHandler);
   }
 }

@@ -47,9 +47,9 @@ export function createToolbar(s) {
     },
     // Добавил кнопку жирного текста
     {
-      value: { fontStyle: s['fontStyle'] === 'bold' ? 'normal' : 'bold' },
+      value: { fontWeight: s['fontWeight'] === 'bold' ? 'normal' : 'bold' },
       icon: 'format_bold',
-      active: s['fontStyle'] === 'bold',
+      active: s['fontWeight'] === 'bold',
     },
   ];
   return buttons.map(toButton).join('');

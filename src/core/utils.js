@@ -20,9 +20,6 @@ export function storage(key, data = null) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-// Оптимизировал сохранение состояния, путём использования debounce.
-storage = debounce(storage, 300);
-
 export function isEqual(a, b) {
   if (typeof a === 'object' && typeof b === 'object') {
     return JSON.stringify(a) === JSON.stringify(b);

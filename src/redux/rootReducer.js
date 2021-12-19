@@ -15,13 +15,10 @@ export function rootReducer(state, action) {
 
       // При вызове действия типа CHANGE_TEXT, введённый текст записывается в action.data.value.
       // После чего, в состоянии меняется dataState и currentText.
-      field = action.data;
-      val = field.value;
+      field = 'dataState';
+      val = action.data.value;
 
-      state.dataState[field.id] = val;
-      state.currentText = val;
-
-      return state;
+      return { ...state, currentText: val, dataState: value(state, field, action) };
     case CHANGE_STYLES:
       return { ...state, currentStyles: action.data };
     case APPLY_STYLE:
